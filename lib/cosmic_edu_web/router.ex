@@ -13,4 +13,10 @@ defmodule CosmicEduWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
+
+  scope "/", CosmicEduWeb do
+    pipe_through :browser
+
+    get "/", LandingPageController, :show
+  end
 end
