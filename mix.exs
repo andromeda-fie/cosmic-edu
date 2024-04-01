@@ -41,7 +41,9 @@ defmodule CosmicEdu.MixProject do
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:lucide_icons, "~> 1.0"},
       {:jason, "~> 1.2"},
-      {:bandit, "~> 1.2"}
+      {:bandit, "~> 1.2"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 

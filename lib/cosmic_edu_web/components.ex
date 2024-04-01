@@ -121,4 +121,52 @@ defmodule CosmicEduWeb.Components do
     </section>
     """
   end
+
+  @exercises [
+    {"Lista 01 - Funções", "https://github.com/andromeda-fie/elixar/tree/main/01-funções"},
+    {"Lista 02 - Recursão", "https://github.com/andromeda-fie/elixar/tree/main/02-recursão"},
+    {"Lista 03 - Lógica Funcional",
+     "https://github.com/andromeda-fie/elixar/tree/main/03-lógica-funcional"},
+    {"Lista 04 - Sintaxe Elixir",
+     "https://github.com/andromeda-fie/elixar/tree/main/04-sintaxe-elixir"},
+    {"Lista 05 - Enum", "https://github.com/andromeda-fie/elixar/tree/main/05-enum"}
+  ]
+
+  def exercises_list_section(assigns) do
+    assigns = assign(assigns, :links, @exercises)
+
+    ~H"""
+    <section id="referencias" class="p-8">
+      <h2 class="text-3xl mb-4">Lista de Exercícios</h2>
+      <ul>
+        <.section_link :for={{label, anchor} <- @links} anchor={anchor} label={label} />
+      </ul>
+      <div class="mt-2 flex-col justify-around align-end">
+        <.fancy_link
+          anchor="https://github.com/andromeda-fie/elixar/blob/main/tutorial-git.md"
+          label="Siga o tutorial Git/GitHub"
+        />
+        <.fancy_link
+          anchor="https://github.com/andromeda-fie/elixar/fork"
+          label="Faça fork do repositório das listas"
+        />
+      </div>
+    </section>
+    """
+  end
+
+  attr :anchor, :string, required: true
+  attr :label, :string, required: true
+
+  defp fancy_link(assigns) do
+    ~H"""
+    <a
+      href={@anchor}
+      class="inline-block bg-deep-space text-stellar-white font-bold py-2 px-4 rounded hover:bg-galactic-silver transition duration-300 text-xs"
+      target="_blank"
+    >
+      <%= @label %>
+    </a>
+    """
+  end
 end
